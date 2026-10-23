@@ -1,0 +1,14 @@
+node_modules
+dist
+.output
+.env
+.env.*
+artifacts
+screenshots
+.grok
+AGENTS.md
+.DS_Store
+*.log
+.tanstack
+.vercel
+coverage

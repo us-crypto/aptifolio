@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Maverick Smith">
+  <rect width="32" height="32" rx="6" fill="#000000"/>
+  <path fill="#00ffaa" d="M6.5 8.2 L19 16 L6.5 23.8 L6.5 19.4 L12.6 16 L6.5 12.6 Z"/>
+  <rect x="20.2" y="20.4" width="6.4" height="3.4" fill="#00ffc8"/>
+</svg>

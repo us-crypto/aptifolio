@@ -1,0 +1,207 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #000000;
+  --color-fg: #00ffaa;
+  --color-muted: #a3a3a3;
+  --color-accent: #00ffc8;
+  --color-line: rgba(0, 255, 170, 0.22);
+  --color-card: rgba(0, 0, 0, 0.72);
+  --color-hover: rgba(0, 255, 200, 0.1);
+  --color-gh-0: #0b120f;
+  --color-gh-1: #0d4a32;
+  --color-gh-2: #12945d;
+  --color-gh-3: #1ad48a;
+  --color-gh-4: #7dffd0;
+  --font-sans: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --radius-card: 1.15rem;
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  html,
+  body {
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+  }
+
+  body {
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background: var(--color-fg);
+    color: #000;
+  }
+
+  body.mesh-cursor,
+  body.mesh-cursor * {
+    cursor: none !important;
+  }
+}
+
+.mesh-back {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: #000;
+  pointer-events: none;
+}
+
+.mesh-canvas,
+.cursor-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.cursor-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+}
+
+.app-root {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.desk {
+  display: none;
+}
+
+.stack {
+  display: block;
+}
+
+@media (min-width: 1024px) {
+  .desk {
+    display: flex;
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  .desk-side {
+    display: flex;
+    width: 46%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: auto;
+    padding: 5.5rem 2.5rem 2.75rem 4.5rem;
+  }
+
+  .desk-main {
+    width: 54%;
+    height: 100%;
+    overflow-y: auto;
+    padding: 5.5rem 3.5rem 4rem 1.5rem;
+  }
+
+  .stack {
+    display: none;
+  }
+}
+
+@media (min-width: 1280px) {
+  .desk-side {
+    padding-left: 6.5rem;
+    padding-right: 3rem;
+  }
+
+  .desk-main {
+    padding-right: 5rem;
+  }
+}
+
+.section-rule {
+  width: 2.75rem;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--color-fg);
+}
+
+.nav-tick {
+  height: 1px;
+  width: 2rem;
+  background: color-mix(in srgb, var(--color-muted) 80%, transparent);
+  transition: width 0.25s ease, height 0.25s ease, background 0.25s ease;
+}
+
+.nav-link:hover .nav-tick,
+.nav-link[data-active="true"] .nav-tick {
+  width: 3.75rem;
+  height: 2px;
+  background: var(--color-fg);
+}
+
+.gh-scroll {
+  overflow-x: auto;
+}
+
+.gh-months,
+.gh-board {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 3px;
+}
+
+.gh-months {
+  grid-template-rows: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+.gh-board {
+  grid-template-rows: repeat(7, minmax(0, 1fr));
+}
+
+.gh-cell {
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 255, 170, 0.18);
+}
+
+.gh-0 { background: var(--color-gh-0); }
+.gh-1 { background: var(--color-gh-1); border-color: transparent; }
+.gh-2 { background: var(--color-gh-2); border-color: transparent; }
+.gh-3 { background: var(--color-gh-3); border-color: transparent; }
+.gh-4 { background: var(--color-gh-4); border-color: transparent; }
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise {
+  animation: rise 0.7s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise {
+    animation: none;
+  }
+}
